@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,59 +10,39 @@ body { font-family: 'Rajdhani', sans-serif; margin:0; padding:0; }
 .orbitron { font-family: 'Orbitron', sans-serif; }
 .glow { text-shadow: 0 0 20px #ff0044, 0 0 40px #ff0044; }
 .card-glow { box-shadow: 0 0 30px rgba(255, 0, 68, 0.6); }
-#bgVideo { position: fixed; top:50%; left:50%; min-width:100%; min-height:100%; width:auto; height:auto; transform:translate(-50%,-50%); object-fit:cover; z-index:-2; display:none; }
-#overlay { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.7); z-index:-1; display:none; }
+#bgVideo { position: fixed; top:50%; left:50%; min-width:100%; min-height:100%; width:auto; height:auto; transform:translate(-50%,-50%); object-fit:cover; z-index:-2; display:none; filter:none; }
+#overlay { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.55); z-index:-1; display:none; }
+footer { font-family:'Orbitron',sans-serif; letter-spacing:2px; }
 </style>
 </head>
-<body class="text-white">
-
-<video id="bgVideo" loop muted playsinline>
+<body class="text-white"><video id="bgVideo" loop muted playsinline>
 <source src="https://raw.githubusercontent.com/faizankhanchang22-gif/Cossdv/main/VID_20251123_155335_891.mp4" type="video/mp4">
 </video>
-<div id="overlay"></div>
-
-<!-- START SCREEN -->
-<div id="startScreen" class="min-h-screen flex flex-col items-center justify-center gap-6 bg-black">
-  <button id="startBtn" class="px-16 py-5 bg-red-800 hover:bg-red-700 rounded-xl text-3xl font-bold card-glow">START</button>
-</div>
-
-<!-- MAIN APP -->
-<div id="mainApp" class="min-h-screen flex flex-col items-center justify-center p-6 relative z-10 hidden">
-<h1 class="text-6xl orbitron glow text-red-600 mb-2 text-center">OBITO DATABASE</h1>
-<p class="text-xl text-red-400 mb-10 text-center">Created by OBITO UCHIHA</p>
-
-<div class="w-full max-w-2xl">
+<div id="overlay"></div><!-- START SCREEN --><div id="startScreen" class="min-h-screen flex flex-col items-center justify-center gap-6 bg-black">
+  <button id="startBtn" class="px-20 py-6 bg-red-800 hover:bg-red-700 rounded-2xl text-4xl font-bold card-glow">ENTER</button>
+</div><!-- MAIN APP --><div id="mainApp" class="min-h-screen flex flex-col items-center justify-center p-6 relative z-10 hidden">
+<h1 class="text-6xl orbitron glow text-red-600 mb-8 text-center">OBITO DATABASE</h1><div class="w-full max-w-2xl mb-10">
   <div class="flex flex-col md:flex-row gap-4 mb-8">
     <input type="text" id="number" placeholder="Enter Number: 03XXXXXXXXX"
-      class="w-full px-6 py-4 bg-black/70 border border-red-900 rounded-lg text-white text-lg focus:outline-none focus:border-red-500 transition"
+      class="w-full px-6 py-4 bg-black/70 border border-red-900 rounded-lg text-white text-xl focus:outline-none focus:border-red-500 transition"
       maxlength="11">
     <button id="traceBtn"
-      class="px-10 py-4 bg-gradient-to-r from-red-900 to-black hover:from-red-800 rounded-lg font-bold text-lg border border-red-700 hover:border-red-500 transition shadow-lg card-glow">
-      TRACE NOW
+      class="px-12 py-4 bg-gradient-to-r from-red-900 to-black hover:from-red-800 rounded-lg font-bold text-xl border border-red-700 hover:border-red-500 transition shadow-lg card-glow">
+      TRACE
     </button>
-  </div>
-
-  <!-- RESULT CARD - CLEAN (NO CREDIT LINE) -->
-  <div id="result" class="hidden bg-black/80 border border-red-900 rounded-xl p-8 card-glow backdrop-blur">
+  </div>  <div id="result" class="hidden bg-black/80 border border-red-900 rounded-xl p-8 card-glow backdrop-blur">
     <h2 class="text-3xl orbitron text-red-500 mb-6 text-center">TARGET FOUND</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xl">
       <div><span class="text-red-400">Number:</span> <span id="resNumber"></span></div>
       <div><span class="text-red-400">Name:</span> <span id="resName"></span></div>
       <div class="md:col-span-2"><span class="text-red-400">CNIC:</span> <span id="resCnic"></span></div>
       <div class="md:col-span-2"><span class="text-red-400">Address:</span> <span id="resAddress"></span></div>
     </div>
+  </div>  <div id="notfound" class="hidden text-center text-red-500 text-3xl mt-10">
+    NO DATA FOUND — TARGET IS IN KAMUI DIMENSION
   </div>
-
-  <div id="notfound" class="hidden text-center text-red-500 text-2xl mt-10">
-    NO DATA FOUND – TARGET IS IN KAMUI DIMENSION
-  </div>
-</div>
-
-<footer class="mt-20 text-red-600">© 2025 OBITO DATABASE | Made in the Shadows</footer>
-</div>
-
-<script>
-// START BUTTON
+</div><footer class="mt-24 text-red-600 text-center text-lg">CREATED BY OBITO UCHIHA</footer>
+</div><script>
 document.getElementById("startBtn").addEventListener("click", () => {
   const video = document.getElementById("bgVideo");
   const overlay = document.getElementById("overlay");
@@ -75,7 +54,6 @@ document.getElementById("startBtn").addEventListener("click", () => {
   document.getElementById("mainApp").classList.remove("hidden");
 });
 
-// TRACE FUNCTION
 async function search() {
   const num = document.getElementById("number").value.trim();
   const resultDiv = document.getElementById("result");
@@ -113,12 +91,10 @@ async function search() {
   }
 
   btn.disabled = false;
-  btn.textContent = "TRACE NOW";
+  btn.textContent = "TRACE";
 }
 
 document.getElementById("traceBtn").addEventListener("click", search);
-document.getElementById("number").addEventListener("keypress", (e) => { if(e.key==="Enter") search(); });
-</script>
-
-</body>
+document.getElementById("number").addEventListener("keypress", (e) => { if(e.key === "Enter") search(); });
+</script></body>
 </html>
